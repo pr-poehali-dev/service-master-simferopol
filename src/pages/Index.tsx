@@ -62,7 +62,8 @@ const Index = () => {
             <Badge className="mb-6 bg-orange-500 hover:bg-orange-600 text-lg px-6 py-2">
               🚀 Выезд за 30 минут
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Ремонт компьютерной техники с выездом на дом</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Ремонт компьютерной техники с выездом на дом
+в Симферополе</h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
               Телевизоры • Компьютеры • Принтеры
             </p>
