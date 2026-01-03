@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import RequestForm from '@/components/RequestForm';
 
 const Index = () => {
   const [activeService, setActiveService] = useState<string>('all');
@@ -69,11 +70,20 @@ const Index = () => {
               Телевизоры • Компьютеры • Принтеры
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white text-xl px-8 py-6 transition-transform hover:scale-105">
+              <Button 
+                size="lg" 
+                className="bg-orange-500 hover:bg-orange-600 text-white text-xl px-8 py-6 transition-transform hover:scale-105"
+                onClick={() => document.getElementById('request-form')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 <Icon name="Phone" className="mr-2" size={24} />
                 Вызвать мастера
               </Button>
-              <Button size="lg" variant="outline" className="bg-white text-blue-600 hover:bg-blue-50 text-xl px-8 py-6 border-2 transition-transform hover:scale-105">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-white text-blue-600 hover:bg-blue-50 text-xl px-8 py-6 border-2 transition-transform hover:scale-105"
+                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Услуги и цены
               </Button>
             </div>
@@ -233,6 +243,16 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="request-form" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Оставить заявку</h2>
+            <p className="text-xl text-gray-600">Заполните форму и мастер свяжется с вами</p>
+          </div>
+          <RequestForm />
+        </div>
+      </section>
+
       <section id="contacts" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -275,7 +295,11 @@ const Index = () => {
                       <p className="text-xl font-bold mb-2">Работаем ежедневно</p>
                       <p className="text-blue-100">с 8:00 до 22:00</p>
                     </div>
-                    <Button size="lg" className="w-full bg-orange-500 hover:bg-orange-600 text-xl py-6 transition-transform hover:scale-105">
+                    <Button 
+                      size="lg" 
+                      className="w-full bg-orange-500 hover:bg-orange-600 text-xl py-6 transition-transform hover:scale-105"
+                      onClick={() => document.getElementById('request-form')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
                       <Icon name="Phone" className="mr-2" size={24} />
                       Заказать звонок
                     </Button>
