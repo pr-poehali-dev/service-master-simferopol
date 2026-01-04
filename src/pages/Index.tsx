@@ -4,9 +4,25 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import RequestForm from '@/components/RequestForm';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 const Index = () => {
   const [activeService, setActiveService] = useState<string>('all');
+  const [isPhoneDialogOpen, setIsPhoneDialogOpen] = useState(false);
+  const phoneNumber = '+79788988810';
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(phoneNumber);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const services = [
     {
@@ -71,7 +87,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-orange-500 hover:bg-orange-600 text-white text-xl px-8 py-6 transition-transform hover:scale-105"
-                onClick={() => document.getElementById('request-form')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setIsPhoneDialogOpen(true)}
               >
                 <Icon name="Phone" className="mr-2" size={24} />
                 Вызвать мастера
@@ -315,6 +331,41 @@ const Index = () => {
           <p className="text-sm">Мастер Антон • Гарантия • Качество</p>
         </div>
       </footer>
+
+      <Dialog open={isPhoneDialogOpen} onOpenChange={setIsPhoneDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-center">Позвоните мастеру</DialogTitle>
+            <DialogDescription className="text-center">
+              Антон ответит на все ваши вопросы
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-4 py-4">
+            <div className="flex items-center justify-center">
+              <div className="text-3xl font-bold text-blue-600">{phoneNumber}</div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Button
+                size="lg"
+                className="bg-green-500 hover:bg-green-600 text-white text-lg"
+                onClick={() => window.location.href = `tel:${phoneNumber}`}
+              >
+                <Icon name="Phone" className="mr-2" size={20} />
+                Позвонить
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg"
+                onClick={handleCopyPhone}
+              >
+                <Icon name={copied ? "Check" : "Copy"} className="mr-2" size={20} />
+                {copied ? 'Скопировано!' : 'Скопировать номер'}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
