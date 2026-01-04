@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import RequestForm from '@/components/RequestForm';
 import {
   Dialog,
   DialogContent,
@@ -257,15 +256,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="request-form" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Оставить заявку</h2>
-            <p className="text-xl text-gray-600">Заполните форму и мастер свяжется с вами</p>
-          </div>
-          <RequestForm />
-        </div>
-      </section>
+
 
       <section id="contacts" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4">
@@ -312,10 +303,10 @@ const Index = () => {
                     <Button 
                       size="lg" 
                       className="w-full bg-orange-500 hover:bg-orange-600 text-xl py-6 transition-transform hover:scale-105"
-                      onClick={() => document.getElementById('request-form')?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => setIsPhoneDialogOpen(true)}
                     >
                       <Icon name="Phone" className="mr-2" size={24} />
-                      Заказать звонок
+                      Позвонить мастеру
                     </Button>
                   </div>
                 </div>
